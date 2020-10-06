@@ -17,7 +17,7 @@ def line_process(en_line, zh_line):
         zhen_lines.append("map.position=位置：|Position:%s, %s, %s\r\n")
         return
     if en_line.find("map.position.agent=")!=-1:
-        zhen_lines.append("map.position.agent=Agent 位置：|Agent Pos: %s, %s, %s")
+        zhen_lines.append("map.position.agent=Agent 位置：|Agent Pos: %s, %s, %s\r\n")
         return
     zhen_line = en_line[:en_line.find("=") + 1]
     zhen_line += get_text(zh_line)

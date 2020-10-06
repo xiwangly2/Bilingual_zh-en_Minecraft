@@ -1,4 +1,4 @@
-## Comments can be added anywhere on a valid line by starting with '##'
+﻿## Comments can be added anywhere on a valid line by starting with '##'|﻿## Comments can be added anywhere on a valid line by starting with '##'
 ##
 ## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
 ## comment on the same line, use TABs.
@@ -5096,7 +5096,7 @@ map.toolTip.scaling=缩放比例：1:%s|Scaling at 1:%s
 map.toolTip.level=等级%s/%s|Level %s/%s
 map.toolTip.unkown=未知地图|Unknown Map
 map.toolTip.locked=已锁定|Locked
-map.position.agent=Agent 位置：|Agent Pos: %s, %s, %smap.position=位置：|Position:%s, %s, %s
+map.position.agent=Agent 位置：|Agent Pos: %s, %s, %s
 map.position=位置：|Position:%s, %s, %s
 
 mcoServer.title=《我的世界》Online世界|Minecraft Online World
@@ -6832,8 +6832,7 @@ store.createdBy=作者：%s|By %s
 store.seeMoreBy=查看由 %s 提供的更多内容|See more by %s
 store.seeMoreBy.multiCreatorBundle=按同捆包创建者查看更多|See More by Bundle Creators
 store.fetchingItem=正在连接到市场…|Connecting to Marketplace...
- 
-| 
+ | 
 store.timer.daysAbbreviated=%s 天|%sd	## This is to let player know how many days are left in a sale. It needs to be abbreviated with no more than 3 characters
 store.timer.hoursAbbreviated=%s 小时|%shr	## This is to let player know how many days are left in a sale. It needs to be abbreviated with no more than 3 characters
 store.timer.minutesAbbreviated=%s 分|%smin	## This is to let player know how many days are left in a sale. It needs to be abbreviated with no more than 3 characters
