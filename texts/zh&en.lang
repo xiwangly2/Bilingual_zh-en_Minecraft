@@ -1,5 +1,5 @@
 ## Comments can be added anywhere on a valid line by starting with '##'
-##希望LY与Young-Lord联合制作中英双语语言包
+##
 ## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
 ## comment on the same line, use TABs.
 accessibility.disableTTS=文本转语音已禁用|Text To Speech disabled
@@ -5096,8 +5096,7 @@ map.toolTip.scaling=缩放比例：1:%s|Scaling at 1:%s
 map.toolTip.level=等级%s/%s|Level %s/%s
 map.toolTip.unkown=未知地图|Unknown Map
 map.toolTip.locked=已锁定|Locked
-map.position.agent=Agent 位置：%s，%s，%s|Agent Pos: %s, %s, %s
-map.position=位置：%s, %s, %s|Position: %s, %s, %s
+map.position.agent=Agent 位置：|Agent Pos: %s, %s, %smap.position=位置：|Position:%s, %s, %s
 
 mcoServer.title=《我的世界》Online世界|Minecraft Online World
 
@@ -8788,4 +8787,3 @@ dynamicPackage.download.android.kilobytesPerSecond=%1$s KB/s|%1$s KB/s					## %1
 dynamicPackage.download.android.timeRemainingNotification=还剩 %1$s|%1$s remaining				## %1$s is the time remaining
 dynamicPackage.download.android.notificationChannelName=更新状态|Update status
 dynamicPackage.download.android.NotificationChannelDescription=显示更新状态和进度|Show update status and progress
-##中英双语由希望LY制作，人工制作制作不易，请勿更改作者信息！
