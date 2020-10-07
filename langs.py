@@ -19,6 +19,9 @@ def line_process(en_line, zh_line):
     if en_line.find("map.position=")!=-1:
         zhen_lines.append("map.position=位置：|Position:%s, %s, %s\r\n")
         return
+    if en_line.find("playscreen.fileSize")!=-1:
+        zhen_lines.append(en_line)
+        return
     zhen_line = en_line[:en_line.find("=") + 1]
     zhen_line += get_text(zh_line)
     zhen_line += '|'
