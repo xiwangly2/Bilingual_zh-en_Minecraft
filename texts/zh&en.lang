@@ -1,4 +1,5 @@
-﻿## Comments can be added anywhere on a valid line by starting with '##'|﻿## Comments can be added anywhere on a valid line by starting with '##'
+﻿## Comments can be added anywhere on a valid line by starting with '##'
+|﻿## Comments can be added anywhere on a valid line by starting with '##'
 ##
 ## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
 ## comment on the same line, use TABs.
@@ -5903,8 +5904,8 @@ hudScreen.tooltip.carve=雕刻|Carve
 hudScreen.tooltip.grow=生长|Grow
 hudScreen.tooltip.boatExit=下船|Leave Boat
 
-playscreen.fileSize.MB=MB|MB
-playscreen.fileSize.GB=GB|GB
+playscreen.fileSize.MB=MB
+playscreen.fileSize.GB=GB
 playscreen.joinableRealms=可加入的领域|Joinable Realms
 playscreen.noFriendsRealms=你尚未成为任何领域的成员。|You have not become a member of any Realms yet.
 playscreen.header.local=游戏|Play
@@ -6832,7 +6833,8 @@ store.createdBy=作者：%s|By %s
 store.seeMoreBy=查看由 %s 提供的更多内容|See more by %s
 store.seeMoreBy.multiCreatorBundle=按同捆包创建者查看更多|See More by Bundle Creators
 store.fetchingItem=正在连接到市场…|Connecting to Marketplace...
- | 
+ 
+| 
 store.timer.daysAbbreviated=%s 天|%sd	## This is to let player know how many days are left in a sale. It needs to be abbreviated with no more than 3 characters
 store.timer.hoursAbbreviated=%s 小时|%shr	## This is to let player know how many days are left in a sale. It needs to be abbreviated with no more than 3 characters
 store.timer.minutesAbbreviated=%s 分|%smin	## This is to let player know how many days are left in a sale. It needs to be abbreviated with no more than 3 characters
