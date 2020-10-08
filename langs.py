@@ -27,7 +27,11 @@ def line_process(en_line, zh_line):
     if get_text(zh_line) == get_text(en_line):
         zhen_lines.append(en_line)
         return
-    # special lines process
+    if en_line.find("options.builddate.format=") != -1:
+        zhen_lines.append("options.builddate.format=创建日期：|Build Date: %s")
+        return
+    # special lines process end
+    
     zhen_line = en_line[:en_line.find("=") + 1]
     zhen_line += get_text(zh_line)
     zhen_line += '|'
