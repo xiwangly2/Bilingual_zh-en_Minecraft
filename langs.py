@@ -30,6 +30,10 @@ def line_process(en_line, zh_line):
     if en_line.find("options.builddate.format=") != -1:
         zhen_lines.append("options.builddate.format=创建日期：|Build Date: %s")
         return
+    if en_line.find("options.protocolversion.format=") != -1:
+        zhen_lines.append("options.protocolversion.format=协议版本：|Protocol Version: %1%s
+")
+        return
     # special lines process end
     
     zhen_line = en_line[:en_line.find("=") + 1]
