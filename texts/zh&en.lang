@@ -8236,7 +8236,7 @@ xbox.profile.favoriteHelperText=收藏的好友会出现在好友列表的最前
 xbox.profile.friend=好友|Friend
 xbox.profile.friendHelperText=关注 %1$s。在互相关注后，您即可邀请他们加入您的游戏。|Follow %1$s. After you both are friends, you can invite them to your game.
 xbox.profile.mute=静音|Mute
-xbox.profile.realName=在 Xbox 应用程序中管理用于共享您的实际姓名的隐私设置。|Manage your privacy settings for sharing your real name in the Xbox app.
+xbox.profile.realName=在 Xbox 应用程序中管理用于共享您的实际姓名的隐私设置。 | Manage your privacy settings for sharing your real name in the Xbox app.
 xbox.profile.removeFriend=解除好友关系|Unfriend
 xbox.profile.report=举报|Report
 
