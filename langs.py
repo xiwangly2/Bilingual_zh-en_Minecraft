@@ -7,7 +7,8 @@ fix_zhen_lines = {
     "map.position.agent": "Agent 位置：|Agent Pos: %s, %s, %s",
     "map.position": "位置：|Position:%s, %s, %s",
     "options.builddate.format": "创建日期：|Build Date: %s",
-    "options.protocolversion.format": "协议版本：|Protocol Version: %1%s"
+    "options.protocolversion.format": "协议版本：|Protocol Version: %1%s"，
+    "xbox.profile.realName": "在 Xbox 应用程序中管理用于共享您的实际姓名的隐私设置。  |  Manage your privacy settings for sharing your real name in the Xbox app."
 }
 
 
