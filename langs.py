@@ -10,18 +10,24 @@ def get_text(line):
 
 def line_process(en_line, zh_line):
     global zhen_lines
+    
+    # special lines process
     if en_line[0] == '#' or en_line[0] == '\r' or en_line.find("menu.copyright") != -1:
         zhen_lines.append(en_line)
         return
-    if en_line.find("map.position.agent=")!=-1:
+    if en_line.find("map.position.agent=") != -1:
         zhen_lines.append("map.position.agent=Agent 位置：|Agent Pos: %s, %s, %s\r\n")
         return
-    if en_line.find("map.position=")!=-1:
+    if en_line.find("map.position=") != -1:
         zhen_lines.append("map.position=位置：|Position:%s, %s, %s\r\n")
         return
-    if en_line.find("playscreen.fileSize")!=-1:
+    if en_line.find("playscreen.fileSize") != -1:
         zhen_lines.append(en_line)
         return
+    if get_text(zh_line) == get_text(en_line):
+        zhen_lines.append(en_line)
+        return
+    # special lines process
     zhen_line = en_line[:en_line.find("=") + 1]
     zhen_line += get_text(zh_line)
     zhen_line += '|'
