@@ -7,7 +7,7 @@ fix_zhen_lines = {
     "map.position.agent": "Agent 位置：|Agent Pos: %s, %s, %s",
     "map.position": "位置：|Position:%s, %s, %s",
     "options.builddate.format": "创建日期：|Build Date: %s",
-    "options.protocolversion.format": "协议版本：|Protocol Version: %1%s"，
+    "options.protocolversion.format": "协议版本：|Protocol Version: %1%s",
     "xbox.profile.realName": "在 Xbox 应用程序中管理用于共享您的实际姓名的隐私设置。  |  Manage your privacy settings for sharing your real name in the Xbox app."
 }
 
@@ -16,8 +16,12 @@ fix_zhen_lines = {
 
 
 def get_text(line):
-    return line[line.find('=') + 1:line.find('\t')]
-
+    if line.find('\t')!=-1:
+        return line[line.find('=') + 1:line.find('\t')]
+    elif line.find('\r')!=-1:
+        return line[line.find('=') + 1:line.find('\r')]
+    else:
+        return line[line.find('=') + 1:line.find('\n')]
 
 def line_process(en_line, zh_line):
     global zhen_lines
@@ -31,6 +35,7 @@ def line_process(en_line, zh_line):
     g_en = get_text(en_line)
     if g_zh == g_en:
         zhen_lines.append(en_line)
+        print(en_line)
         return
 
     for keyword, correct_text in fix_zhen_lines.items():
@@ -66,7 +71,7 @@ for enline, zhline in zip(en_lines, zh_lines):
 
 # After this, zhen_lines should save zhen file content(end with \r\n)
 
-zhen = codecs.open(r"zh&en.lang", 'w', encoding='utf-8')
+zhen = codecs.open(r"./texts/zh_CN.lang", 'w', encoding='utf-8')
 for zhen_line in zhen_lines:
     #    print(zhen_line, end="")
     zhen.write(zhen_line)
