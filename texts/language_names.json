@@ -1,5 +1,4 @@
 [
-  [ "zh&en", "中英双语(希望LY制作)|Bilingual_zh&en(by xiwangly)" ],
   [ "en_US", "English (US)" ],
   [ "en_GB", "English (UK)" ],
   [ "de_DE", "Deutsch (Deutschland)" ],
@@ -13,7 +12,7 @@
   [ "pt_BR", "Português (Brasil)" ],
   [ "pt_PT", "Português (Portugal)" ],
   [ "ru_RU", "Русский (Россия)" ],
-  [ "zh_CN", "简体中文" ],
+  [ "zh_CN", "中英双语" ],
   [ "zh_TW", "繁體中文" ],
   [ "nl_NL", "Nederlands (Nederland)" ],
   [ "bg_BG", "Български (BG)" ],
