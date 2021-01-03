@@ -6,4 +6,4 @@
 
 请保留著作权。
 
-非常感谢[Young-Lord](https://github.com/Young-Lord)提供的Python脚本[https://github.com/Young-Lord/Bilingual_zh-en_Minecraft](使用python脚本重新生成zh&en.lang)
+非常感谢[Young-Lord](https://github.com/Young-Lord)提供的Python脚本[使用python脚本重新生成zh&en.lang](https://github.com/Young-Lord/Bilingual_zh-en_Minecraft)
