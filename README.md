@@ -1,12 +1,12 @@
-# Bilingual_zh-en_Minecraft
+# MCBE双语资源包
 
 ## 介绍
 
 适用于 Minecraft BE 的中英双语资源包
 
-请保留著作权。
+本项目中一切以".lang"结尾的文件版权属于Mojang Studio，如有侵权，请联系我
 
-## 生成
+## 生成（可选）
 
 ### 使用最新版MCBE的语言文件（可选，要求电脑装有Minecraft基岩版）：
 
