@@ -1,9 +1,11 @@
 # -*- coding: UTF-8 -*-
 # Author: github.com/Young-Lord
-# Time: 2020/10/6 17:30
+# Time(V1): 2020/10/6 17:30
+# Time(V2): 2021/1/25 18:23
 import codecs
 import os,sys
 print("If you got a luan4 ma3 , please give me a issue")
+#lines=dict()#format:lines=["map.position":{"zh":"位置：","en":"Position:%s, %s, %s","empty":"\t","comment":"Manage your...","result":"xxxxxx|xxxxxx"},"aa.bb":{}}
 
 fix_zhen_lines = {
     "map.position.agent": "Agent 位置：|Agent Pos: %s, %s, %s",
@@ -14,48 +16,39 @@ fix_zhen_lines = {
 }# add wrong translators here
 
 
-def get_text(line):
-    if line.find('\t')!=-1:
-        return line[line.find('=') + 1:line.find('\t')]
-    elif line.find('\r')!=-1:
-        return line[line.find('=') + 1:line.find('\r')]
+def has_content(line):
+    if line[0] in ['#','\r','\n',' ']:
+        return False
+    if line.find('=')!=-1:
+        return True
+    info("line="+line)
+    error("出bug了，请联系我并附带上两个.lang文件（位置：has_content）")
+
+def get_name(line):
+    if has_content(line):
+        return line[:line.find("=")]
     else:
-        return line[line.find('=') + 1:line.find('\n')]
+        return ''
 
-def line_process(en_line, zh_line):
-    global zhen_lines
-    
-    # special lines process
-    if en_line[0] == '#' or en_line[0] == '\r' or en_line[0] == '\n' or en_line.find("=") == -1:
-        zhen_lines.append(en_line)
-        return
-    
-    g_zh = get_text(zh_line)
-    g_en = get_text(en_line)
-    if g_zh == g_en:
-        zhen_lines.append(en_line)
-        #print(en_line)
-        return
+def get_text(line):
+    if has_content(line):
+        if line.find('\t')!=-1:
+            return line[line.find('=') + 1:line.find('\t')]
+        elif line.find('\r')!=-1:
+            return line[line.find('=') + 1:line.find('\r')]
+        else:
+            return line[line.find('=') + 1:line.find('\n')]
+    else:
+        return ''
 
-    for keyword, correct_text in fix_zhen_lines.items():
-        if en_line[:en_line.find("=")] == keyword:
-            zhen_lines.append(keyword + "=" + correct_text + "\r\n")
-            return
+def get_empty(line):
+    if line.find('\t')!=-1:
+        return line[line.find('\t'):line.find('#')]
+    else:
+        return ''
 
-    if g_zh.count("%s") != 0:
-        for iterator in range(1, g_zh.count("%s")+1):
-            g_zh = g_zh.replace("%s", "%" + str(iterator) + "$s")
-            g_en = g_en.replace("%s", "%" + str(iterator) + "$s")
-    # special lines process end
-
-    zhen_line = en_line[:en_line.find("=") + 1]
-    zhen_line += g_zh
-    zhen_line += '|'
-    zhen_line += g_en
-    zhen_line += en_line[en_line.find('\t'):]
-    if zhen_line[0] == '|':
-        return
-    zhen_lines.append(zhen_line)
+def get_comment(line):
+    return (line.rstrip())[line.find("#")+1:]
 
 def info(zh,en=""):
     print("[INFO]"+zh,end="")
@@ -71,8 +64,7 @@ def error(zh,en=""):
     os._exit(3)
 
 
-# __main__
-info("程序目录:"+os.path.abspath(os.path.dirname(sys.argv[0])))
+#info("程序目录:"+os.path.abspath(os.path.dirname(sys.argv[0])))
 os.chdir(os.path.abspath(os.path.dirname(sys.argv[0])))
 try:
     en = codecs.open(r"en_US.lang", encoding='utf-8')
@@ -93,15 +85,15 @@ except FileNotFoundError:
     error("寻找待合成的文件失败！")
 
 en_lines = en.readlines()
+en_lines[0] = en_lines[0].replace('\ufeff','')
 zh_lines = zh.readlines()
-zhen_lines = list()  # it means zh&en
+zh_lines[0] = zh_lines[0].replace('\ufeff','')
+en.close()
+zh.close()
 
-for enline, zhline in zip(en_lines, zh_lines):
-    line_process(enline, zhline)
 
-# After this, zhen_lines should save zhen file content(end with \r\n)
-choice_fonts=input("[ASK]是否使用字体修复（可以让文字显示更清晰，但是会替换掉纯中文的语言选项）\n是-默认(y) 否(n):")
-if choice_fonts=='y' or choice_fonts=='是' or choice_fonts=='yes' or choice_fonts=='Y' or choice_fonts=='':# pyInstaller bug fix end
+choice_fonts=input("[ASK](if luan4 ma3, read README.md or press Enter)\r\n是否使用字体修复（可以让文字显示更清晰，但是会替换掉纯中文的语言选项）\n是-默认(y) 否(n):")
+if choice_fonts in['y','是','yes','Y','']:
     zhen = codecs.open("./texts/zh_CN.lang", 'w', encoding='utf-8')
     config_file=open("./texts/languages.json")
     content=config_file.read()
@@ -143,10 +135,70 @@ else:
     config_file.write(content)
     config_file.close()
 
+#MAIN PROGRESS
+'''zhen_lines = list()  # it means zh&en
+for enline, zhline in zip(en_lines, zh_lines):
+    line_process(enline, zhline)
+# After this, zhen_lines should save zhen file content(end with \r\n)
+
+
 for zhen_line in zhen_lines:
     #    print(zhen_line, end="")
-    zhen.write(zhen_line)
+    zhen.write(zhen_line)'''
+#print(zh_lines)
+res_lines=list()
+current_index=0
+res_lines_index=dict()
+for i in zh_lines:
+    #print(i.strip())
+    #if get_name(i)!='':
+    #    print(get_name(i),end="=")
+    #print("{}{}{}{}\r\n".format(get_text(i),get_empty(i),"#" if i.find("#")!=-1 else "",get_comment(i)))
+    if not has_content(i):
+        res_lines.append(i)
+        current_index+=1
+        continue
+    res_lines_index[get_name(i)]=current_index
+    res_lines.append({"name":get_name(i),"zh":get_text(i),"en":"","empty":get_empty(i),"comment":get_comment(i),"commented":(True if i.find("#")!=-1 else False)})
+    current_index+=1
+for i in en_lines:
+    if not has_content(i):
+        continue
+    if get_name(i) not in res_lines_index.keys():
+        res_lines.append({"name":get_name(i),"zh":"","en":get_text(i),"empty":get_empty(i),"comment":get_comment(i),"commented":(True if i.find("#")!=-1 else False)})
+    else:
+        res_lines[res_lines_index[get_name(i)]]["en"]=get_text(i)
 
-en.close()
-zh.close()
+for i in res_lines:
+    if type(i)==str:
+        zhen.write(i.rstrip()+"\r\n")
+        continue
+    if i["comment"]=="":
+        i["empty"]=""
+        i["commented"]=False
+    if i["name"] in fix_zhen_lines.keys():
+        zhen.write(i["name"]+"="+fix_zhen_lines[i["name"]]+"\r\n")
+        continue
+    if i["zh"]==i["en"]:
+        zhen.write("{}={}{}{}{}\r\n".format(i["name"],i["zh"],i["empty"],"#" if i["commented"] else "",i["comment"]))
+        continue
+    if i["zh"].count("%s") > 0:
+        for iterator in range(1, i["zh"].count("%s")+1):
+            i["zh"] = i["zh"].replace("%s", "%" + str(iterator) + "$s",1)
+            i["en"] = i["en"].replace("%s", "%" + str(iterator) + "$s",1)
+    if i["zh"].count("%d") > 0:
+        for iterator in range(1, i["zh"].count("%d")+1):
+            i["zh"] = i["zh"].replace("%d", "%" + str(iterator) + "$d",1)
+            i["en"] = i["en"].replace("%d", "%" + str(iterator) + "$d",1)
+    zhen.write(i["name"]+"=")
+    zhen.write(i["zh"].rstrip())
+    if not(i["zh"]=='' or i["en"]=='' or (i["zh"]==i["en"])):
+        zhen.write("|")
+    if not (i["zh"]==i["en"]):
+        zhen.write(i["en"].rstrip())
+    zhen.write(i["empty"])
+    if i["commented"]:
+        zhen.write("#"+(i["comment"].rstrip()))
+    zhen.write("\r\n")
+
 zhen.close()
