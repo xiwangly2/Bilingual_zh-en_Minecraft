@@ -20,7 +20,7 @@
 
 1.双击langs.exe
 
-2.程序会询问是否要使用“文字修复”，详细解释一下：
+2.程序会询问是否要使用“文字修复”，详细解释：
 
 - **如果你选择使用（输入y并按回车或直接按回车）**
 
@@ -40,7 +40,7 @@
 
 感谢：
 
-- 灵感来源：[xiwangly2](github.com/xiwangly2)
+- 灵感来源：[xiwangly2](https://github.com/xiwangly2)
 
 - Minecraft制作：Mojang Studio
 
