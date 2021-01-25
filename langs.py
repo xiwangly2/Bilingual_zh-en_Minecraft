@@ -68,16 +68,25 @@ def error(zh,en=""):
     if en!='':
         print("|",end="")
     print(en)
-    exit()
+    os._exit(3)
+
+
 # __main__
+info("程序目录:"+os.path.abspath(os.path.dirname(sys.argv[0])))
 os.chdir(os.path.abspath(os.path.dirname(sys.argv[0])))
 try:
     en = codecs.open(r"en_US.lang", encoding='utf-8')
     zh = codecs.open(r"zh_CN.lang", encoding='utf-8')
     load_from="local"
 except FileNotFoundError:
-    en.close()
-    zh.close()
+    try:
+        en.close()
+    except:
+        pass
+    try:
+        zh.close()
+    except:
+        pass
     info("请将MCBE的语言文件（en_US.lang和zh_CN.lang）复制到程序目录下")
     info("一般情况下，他们位于（win10）"+r"C:\Program Files\WindowsApps\Microsoft.MinecraftUWP_"+"[当前版本号]"+r"_x64__8wekyb3d8bbwe\data\resource_packs\vanilla\texts"+"目录下")
     info("个人建议用Everything搜索这两个文件")
@@ -92,8 +101,8 @@ for enline, zhline in zip(en_lines, zh_lines):
 
 # After this, zhen_lines should save zhen file content(end with \r\n)
 choice_fonts=input("[ASK]是否使用字体修复（可以让文字显示更清晰，但是会替换掉纯中文的语言选项）\n是-默认(y) 否(n):")
-if choice_fonts=='y' or choice_fonts=='是' or choice_fonts=='yes' or choice_fonts=='Y' or choice_fonts=='':
-    zhen = codecs.open(r"./texts/zh_CN.lang", 'w', encoding='utf-8')
+if choice_fonts=='y' or choice_fonts=='是' or choice_fonts=='yes' or choice_fonts=='Y' or choice_fonts=='':# pyInstaller bug fix end
+    zhen = codecs.open("./texts/zh_CN.lang", 'w', encoding='utf-8')
     config_file=open("./texts/languages.json")
     content=config_file.read()
     config_file.close()
@@ -114,11 +123,7 @@ if choice_fonts=='y' or choice_fonts=='是' or choice_fonts=='yes' or choice_fon
     config_file.close()
     
 else:
-    try:
-       os.remove("./texts/zh_CN.lang")
-    except:
-        pass
-    zhen = codecs.open(r"./texts/zh&en.lang", 'w', encoding='utf-8')
+    zhen = codecs.open("./texts/zh&en.lang", 'w', encoding='utf-8')
     config_file=open("./texts/languages.json")
     content=config_file.read()
     config_file.close()
