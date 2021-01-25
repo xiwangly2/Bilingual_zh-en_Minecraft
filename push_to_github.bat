@@ -1,4 +1,4 @@
-REM @echo off
+@echo off
 set /p msg=Input commit message:
 git add .
 git commit -m "%msg%"
