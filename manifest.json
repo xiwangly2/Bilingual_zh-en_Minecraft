@@ -1,17 +1,17 @@
 {
    "format_version" : 1,
    "header" : {
-      "description" : "Bilingual_zh&en(by xiwangly)",
-      "name" : "Bilingual_zh&en(by xiwangly)",
+      "description" : "适用于我的世界基岩版v1.16.201的中英双语语言包",
+      "name" : "中英双语语言包",
       "uuid" : "4bd0cca1-4d82-49ab-aaeb-03ed60c0285c",
-      "version" : [ 0, 1, 0 ]
+      "version" : [ 1, 0, 0 ]
    },
    "modules" : [
       {
-         "description" : "Bilingual_zh&en(by xiwangly)",
+         "description" : "中英双语语言包",
          "type" : "resources",
          "uuid" : "9f0df065-752f-4d87-a375-dc31cf5cda39",
-         "version" : [ 0, 1, 0 ]
+         "version" : [ 1, 0, 0 ]
       }
    ]
 }

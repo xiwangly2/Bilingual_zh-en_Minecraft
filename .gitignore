@@ -1,0 +1,4 @@
+#for pyinstaller
+build
+__pycache__
+langs.spec

@@ -1,0 +1,1 @@
+pyinstaller langs.py -F --distpath . --clean
